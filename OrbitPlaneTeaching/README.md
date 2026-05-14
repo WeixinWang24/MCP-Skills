@@ -72,6 +72,23 @@ Schema and fixture:
 - `state/schema.sql`
 - `fixtures/beginner_python_learning_state.json`
 
+## Teaching Case Artifacts
+
+Teaching case artifacts use HTML for human-readable presentation and embedded JSON for machine-readable structure.
+
+Contract:
+
+- HTML must contain `<script type="application/json" id="orbitplane-teaching-case">`.
+- Embedded metadata schema version is `orbitplane.teaching.case.v1`.
+- Code anchors use `anchorId`, `filePath`, `startLine`, and `endLine`.
+- Teaching steps reference anchors by `anchorIds`.
+- JSONL event streams should link to case artifacts with `ARTIFACT_LINKED` instead of embedding full HTML.
+
+Files:
+
+- `artifacts/teaching_case.py`
+- `fixtures/teaching_cases/python_variables_beginner.html`
+
 ## Skill Bundle
 
 The Codex skill bundle lives at:
@@ -85,4 +102,5 @@ The skill prefers the `orbitplane-teaching` MCP server and falls back to the dir
 ```bash
 /Users/visen24/anaconda3/envs/Orbit/bin/python -m pytest /Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/test_server.py
 /Users/visen24/anaconda3/envs/Orbit/bin/python -m pytest /Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/test_state.py
+/Users/visen24/anaconda3/envs/Orbit/bin/python -m pytest /Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/test_teaching_case.py
 ```

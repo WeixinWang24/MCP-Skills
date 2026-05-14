@@ -58,6 +58,20 @@ Before generating beginner-oriented teaching, read learner state when the MCP to
 
 Do not invent learner mastery. Use conservative progress states such as `introduced` or `practiced` until the learner applies the concept in project work.
 
+## Teaching Case Artifacts
+
+For durable tutorials, create or link a teaching case HTML artifact instead of putting the whole lesson into JSONL.
+
+Rules:
+
+- HTML is for human presentation.
+- Embedded JSON is the machine-readable contract.
+- The HTML must contain `<script type="application/json" id="orbitplane-teaching-case">`.
+- Metadata schema version must be `orbitplane.teaching.case.v1`.
+- Use code anchors with `anchorId`, `filePath`, `startLine`, and `endLine`.
+- Teaching steps must reference anchors by `anchorIds`.
+- Emit `ARTIFACT_LINKED` with `artifactType: "TEACHING_CASE_HTML"` after creating or selecting an artifact.
+
 ## Teaching Policy
 
 - Assume the user is technically strong and wants architecture-level reasoning.
