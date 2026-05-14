@@ -1,0 +1,72 @@
+[
+  {
+    "schemaVersion": "orbitplane.codex.event.v1",
+    "eventId": "evt_dummy_001",
+    "sequence": 1,
+    "emittedAt": "2026-05-14T18:20:00Z",
+    "producer": {
+      "kind": "SKILL",
+      "name": "orbitplane-codex-teacher",
+      "version": "0.1.0"
+    },
+    "session": {
+      "sessionId": "codex_dummy_teaching_session",
+      "workspaceId": "OrbitPlane",
+      "repoRoot": "/Volumes/2TB/Dev/OrbitPlane",
+      "branch": "codex/codex-teaching-output"
+    },
+    "eventType": "TUTORIAL_STEP_CHANGED",
+    "payload": {
+      "stepId": "contract-first-output",
+      "title": "Contract-first teaching output",
+      "summary": "Codex turns an implementation step into structured learning data before OrbitPlane renders it.",
+      "learningObjectives": [
+        "Separate teaching policy from transport mechanics",
+        "Keep event output replayable and local-first"
+      ]
+    },
+    "links": [],
+    "privacy": {
+      "hasSecrets": false,
+      "redactionApplied": true,
+      "redactionNotes": []
+    }
+  },
+  {
+    "schemaVersion": "orbitplane.codex.event.v1",
+    "eventId": "evt_dummy_002",
+    "sequence": 2,
+    "emittedAt": "2026-05-14T18:21:00Z",
+    "producer": {
+      "kind": "SKILL",
+      "name": "orbitplane-codex-teacher",
+      "version": "0.1.0"
+    },
+    "session": {
+      "sessionId": "codex_dummy_teaching_session",
+      "workspaceId": "OrbitPlane",
+      "repoRoot": "/Volumes/2TB/Dev/OrbitPlane",
+      "branch": "codex/codex-teaching-output"
+    },
+    "eventType": "TEACHING_NOTE_CREATED",
+    "payload": {
+      "noteId": "note_dummy_001",
+      "title": "Why the MVP emitter is local-first",
+      "body": "The first output path avoids package-manager dependencies and writes append-only JSONL locally. That keeps the event stream easy to inspect while reducing supply-chain exposure.",
+      "level": "ARCHITECTURE",
+      "learningObjectives": [
+        "Use narrow local tools before introducing networked control planes",
+        "Treat event payloads as display data rather than commands"
+      ],
+      "relatedFilePaths": [
+        "/Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/emitter/orbitplane_emit_event.py"
+      ]
+    },
+    "links": [],
+    "privacy": {
+      "hasSecrets": false,
+      "redactionApplied": true,
+      "redactionNotes": []
+    }
+  }
+]
