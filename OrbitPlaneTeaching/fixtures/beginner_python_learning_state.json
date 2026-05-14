@@ -1,0 +1,225 @@
+{
+  "learner": {
+    "learnerId": "default",
+    "displayName": "Default Learner"
+  },
+  "profile": {
+    "profileId": "default-python-beginner-profile",
+    "level": "absolute_beginner",
+    "primaryGoal": "learn_python_through_project",
+    "priorLanguages": [],
+    "preferredTeachingStyle": "mixed",
+    "pacing": "slow",
+    "reviewPreference": "spaced",
+    "explanationLanguage": "zh-CN",
+    "notes": "Default single-user learner profile for project-driven beginner Python teaching."
+  },
+  "path": {
+    "pathId": "python_project_beginner_v1",
+    "language": "python",
+    "title": "Python Project Beginner Path",
+    "description": "Learn Python from zero through real project work.",
+    "targetLevel": "beginner_to_project_literate",
+    "status": "active"
+  },
+  "concepts": [
+    {
+      "conceptId": "python.variables.assignment",
+      "slug": "variables-assignment",
+      "title": "Variables and Assignment",
+      "summary": "Bind names to values and update them during a program.",
+      "difficulty": 1,
+      "defaultOrder": 10,
+      "parentConceptId": null,
+      "tags": ["syntax", "beginner"]
+    },
+    {
+      "conceptId": "python.syntax.expressions",
+      "slug": "syntax-expressions",
+      "title": "Expressions and Basic Syntax",
+      "summary": "Read and write simple Python expressions and statements.",
+      "difficulty": 1,
+      "defaultOrder": 20,
+      "parentConceptId": null,
+      "tags": ["syntax", "beginner"]
+    },
+    {
+      "conceptId": "python.types.primitives",
+      "slug": "primitive-types",
+      "title": "Primitive Types",
+      "summary": "Use strings, integers, floats, booleans, and None.",
+      "difficulty": 1,
+      "defaultOrder": 30,
+      "parentConceptId": null,
+      "tags": ["types", "beginner"]
+    },
+    {
+      "conceptId": "python.collections.list",
+      "slug": "lists",
+      "title": "Lists",
+      "summary": "Store ordered collections and access items by index.",
+      "difficulty": 2,
+      "defaultOrder": 40,
+      "parentConceptId": null,
+      "tags": ["collections"]
+    },
+    {
+      "conceptId": "python.collections.dict",
+      "slug": "dicts",
+      "title": "Dictionaries",
+      "summary": "Store key-value data for structured program state.",
+      "difficulty": 2,
+      "defaultOrder": 50,
+      "parentConceptId": null,
+      "tags": ["collections"]
+    },
+    {
+      "conceptId": "python.control.conditionals",
+      "slug": "conditionals",
+      "title": "Conditionals",
+      "summary": "Choose behavior with if, elif, and else.",
+      "difficulty": 2,
+      "defaultOrder": 60,
+      "parentConceptId": null,
+      "tags": ["control-flow"]
+    },
+    {
+      "conceptId": "python.control.loops",
+      "slug": "loops",
+      "title": "Loops",
+      "summary": "Repeat work with for and while loops.",
+      "difficulty": 2,
+      "defaultOrder": 70,
+      "parentConceptId": null,
+      "tags": ["control-flow"]
+    },
+    {
+      "conceptId": "python.functions.definition",
+      "slug": "functions",
+      "title": "Functions",
+      "summary": "Package reusable behavior with parameters and return values.",
+      "difficulty": 3,
+      "defaultOrder": 80,
+      "parentConceptId": null,
+      "tags": ["structure"]
+    },
+    {
+      "conceptId": "python.modules.imports",
+      "slug": "modules-imports",
+      "title": "Modules and Imports",
+      "summary": "Split code into files and reuse code with import statements.",
+      "difficulty": 3,
+      "defaultOrder": 90,
+      "parentConceptId": null,
+      "tags": ["project-structure"]
+    },
+    {
+      "conceptId": "python.files.io",
+      "slug": "file-io",
+      "title": "File I/O",
+      "summary": "Read and write local files safely.",
+      "difficulty": 3,
+      "defaultOrder": 100,
+      "parentConceptId": null,
+      "tags": ["io"]
+    },
+    {
+      "conceptId": "python.errors.exceptions",
+      "slug": "exceptions",
+      "title": "Exceptions",
+      "summary": "Handle errors with try, except, and finally.",
+      "difficulty": 3,
+      "defaultOrder": 110,
+      "parentConceptId": null,
+      "tags": ["errors"]
+    },
+    {
+      "conceptId": "python.typing.type_hints",
+      "slug": "type-hints",
+      "title": "Type Hints",
+      "summary": "Use annotations to make Python code easier to read and check.",
+      "difficulty": 3,
+      "defaultOrder": 120,
+      "parentConceptId": null,
+      "tags": ["typing"]
+    },
+    {
+      "conceptId": "python.oop.classes",
+      "slug": "classes",
+      "title": "Classes and Objects",
+      "summary": "Group data and behavior into reusable object types.",
+      "difficulty": 4,
+      "defaultOrder": 130,
+      "parentConceptId": null,
+      "tags": ["oop"]
+    },
+    {
+      "conceptId": "python.oop.composition",
+      "slug": "composition",
+      "title": "Composition",
+      "summary": "Build larger behavior by combining simpler objects.",
+      "difficulty": 4,
+      "defaultOrder": 140,
+      "parentConceptId": "python.oop.classes",
+      "tags": ["oop", "design"]
+    },
+    {
+      "conceptId": "python.decorators.basics",
+      "slug": "decorators",
+      "title": "Decorators",
+      "summary": "Wrap functions or methods to add behavior cleanly.",
+      "difficulty": 5,
+      "defaultOrder": 150,
+      "parentConceptId": null,
+      "tags": ["advanced-syntax"]
+    },
+    {
+      "conceptId": "python.testing.pytest",
+      "slug": "pytest",
+      "title": "Testing with pytest",
+      "summary": "Write tests that prove Python behavior works.",
+      "difficulty": 4,
+      "defaultOrder": 160,
+      "parentConceptId": null,
+      "tags": ["testing"]
+    },
+    {
+      "conceptId": "python.project.structure",
+      "slug": "project-structure",
+      "title": "Project Structure",
+      "summary": "Organize Python files, fixtures, tests, and modules.",
+      "difficulty": 4,
+      "defaultOrder": 170,
+      "parentConceptId": null,
+      "tags": ["project-structure"]
+    },
+    {
+      "conceptId": "python.async.basics",
+      "slug": "async-basics",
+      "title": "Async Basics",
+      "summary": "Understand async functions and await for concurrent work.",
+      "difficulty": 5,
+      "defaultOrder": 180,
+      "parentConceptId": null,
+      "tags": ["async"]
+    }
+  ],
+  "prerequisites": [
+    {"conceptId": "python.syntax.expressions", "prerequisiteConceptId": "python.variables.assignment"},
+    {"conceptId": "python.collections.list", "prerequisiteConceptId": "python.types.primitives"},
+    {"conceptId": "python.collections.dict", "prerequisiteConceptId": "python.types.primitives"},
+    {"conceptId": "python.control.conditionals", "prerequisiteConceptId": "python.syntax.expressions"},
+    {"conceptId": "python.control.loops", "prerequisiteConceptId": "python.collections.list"},
+    {"conceptId": "python.functions.definition", "prerequisiteConceptId": "python.control.conditionals"},
+    {"conceptId": "python.modules.imports", "prerequisiteConceptId": "python.functions.definition"},
+    {"conceptId": "python.files.io", "prerequisiteConceptId": "python.modules.imports"},
+    {"conceptId": "python.errors.exceptions", "prerequisiteConceptId": "python.control.conditionals"},
+    {"conceptId": "python.typing.type_hints", "prerequisiteConceptId": "python.functions.definition"},
+    {"conceptId": "python.oop.classes", "prerequisiteConceptId": "python.functions.definition"},
+    {"conceptId": "python.oop.composition", "prerequisiteConceptId": "python.oop.classes"},
+    {"conceptId": "python.decorators.basics", "prerequisiteConceptId": "python.functions.definition"},
+    {"conceptId": "python.testing.pytest", "prerequisiteConceptId": "python.functions.definition"},
+    {"conceptId": "python.project.structure", "prerequisiteConceptId": "python.modules.imports"},
+    {"conceptId": "python.async.basics", "prerequisiteConceptId": "python.functions.definition"}
+  ]
+}

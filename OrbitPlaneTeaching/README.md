@@ -16,6 +16,7 @@ Override locations with:
 
 - `ORBITPLANE_REPO_ROOT`
 - `ORBITPLANE_CODEX_EVENT_DIR`
+- `ORBITPLANE_TEACHING_STATE_DB`
 
 ## Smoke Test
 
@@ -48,10 +49,28 @@ Tools:
 - `orbitplane_emit_events`
 - `orbitplane_start_session`
 - `orbitplane_end_session`
+- `orbitplane_initialize_learning_state`
+- `orbitplane_get_learner_profile`
+- `orbitplane_get_concept_progress`
+- `orbitplane_record_teaching_evidence`
+- `orbitplane_update_concept_progress`
 
 Example config:
 
 - `mcp.json`
+
+## Learning State
+
+Learner profile and progress state uses local SQLite.
+
+Default database:
+
+`/Volumes/2TB/Dev/OrbitPlane/.orbitplane/teaching-state/learner-progress.sqlite3`
+
+Schema and fixture:
+
+- `state/schema.sql`
+- `fixtures/beginner_python_learning_state.json`
 
 ## Skill Bundle
 
@@ -65,4 +84,5 @@ The skill prefers the `orbitplane-teaching` MCP server and falls back to the dir
 
 ```bash
 /Users/visen24/anaconda3/envs/Orbit/bin/python -m pytest /Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/test_server.py
+/Users/visen24/anaconda3/envs/Orbit/bin/python -m pytest /Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/test_state.py
 ```

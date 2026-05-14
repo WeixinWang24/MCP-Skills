@@ -18,6 +18,13 @@ from emitter.orbitplane_emit_event import (
     default_out_dir,
     validate_event,
 )
+from state.learner_state import (
+    get_concept_progress,
+    get_learner_profile,
+    initialize_database,
+    record_teaching_evidence,
+    update_concept_progress,
+)
 
 SERVER_NAME = "orbitplane-teaching"
 PRODUCER_NAME = "orbitplane-teaching-mcp"
@@ -182,6 +189,72 @@ def _end_session_result(
     return _emit_event_result(event, out_dir=out_dir)
 
 
+def _initialize_learning_state_result(db_path: str | None = None) -> dict[str, Any]:
+    return initialize_database(db_path)
+
+
+def _get_learner_profile_result(learner_id: str = "default", db_path: str | None = None) -> dict[str, Any]:
+    return get_learner_profile(db_path, learner_id)
+
+
+def _get_concept_progress_result(
+    learner_id: str = "default",
+    path_id: str = "python_project_beginner_v1",
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    return get_concept_progress(db_path, learner_id, path_id=path_id)
+
+
+def _record_teaching_evidence_result(
+    learner_id: str,
+    session_id: str,
+    event_id: str,
+    event_type: str,
+    concept_id: str | None = None,
+    project_id: str | None = None,
+    practice_id: str | None = None,
+    file_path: str | None = None,
+    line_hint: int | None = None,
+    summary: str | None = None,
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    return record_teaching_evidence(
+        db_path,
+        learner_id=learner_id,
+        session_id=session_id,
+        event_id=event_id,
+        event_type=event_type,
+        concept_id=concept_id,
+        project_id=project_id,
+        practice_id=practice_id,
+        file_path=file_path,
+        line_hint=line_hint,
+        summary=summary,
+    )
+
+
+def _update_concept_progress_result(
+    learner_id: str,
+    concept_id: str,
+    status: str,
+    confidence: float,
+    evidence_event_ids: list[str] | None = None,
+    next_review_at: str | None = None,
+    notes: str | None = None,
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    return update_concept_progress(
+        db_path,
+        learner_id=learner_id,
+        concept_id=concept_id,
+        status=status,
+        confidence=confidence,
+        evidence_event_ids=evidence_event_ids,
+        next_review_at=next_review_at,
+        notes=notes,
+    )
+
+
 _configure_from_argv()
 mcp = FastMCP(SERVER_NAME)
 
@@ -259,6 +332,85 @@ def orbitplane_end_session(
         out_dir=out_dir,
         event_id=event_id,
         emitted_at=emitted_at,
+    )
+
+
+@mcp.tool()
+def orbitplane_initialize_learning_state(db_path: str | None = None) -> dict[str, Any]:
+    """Initialize the local learner-progress SQLite database with beginner Python fixtures."""
+    return _initialize_learning_state_result(db_path)
+
+
+@mcp.tool()
+def orbitplane_get_learner_profile(
+    learner_id: str = "default",
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    """Read one learner profile from the local learner-progress database."""
+    return _get_learner_profile_result(learner_id, db_path)
+
+
+@mcp.tool()
+def orbitplane_get_concept_progress(
+    learner_id: str = "default",
+    path_id: str = "python_project_beginner_v1",
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    """Read concept progress for one learner and learning path."""
+    return _get_concept_progress_result(learner_id, path_id, db_path)
+
+
+@mcp.tool()
+def orbitplane_record_teaching_evidence(
+    learner_id: str,
+    session_id: str,
+    event_id: str,
+    event_type: str,
+    concept_id: str | None = None,
+    project_id: str | None = None,
+    practice_id: str | None = None,
+    file_path: str | None = None,
+    line_hint: int | None = None,
+    summary: str | None = None,
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    """Record a bounded progress index for an OrbitPlane teaching event."""
+    return _record_teaching_evidence_result(
+        learner_id=learner_id,
+        session_id=session_id,
+        event_id=event_id,
+        event_type=event_type,
+        concept_id=concept_id,
+        project_id=project_id,
+        practice_id=practice_id,
+        file_path=file_path,
+        line_hint=line_hint,
+        summary=summary,
+        db_path=db_path,
+    )
+
+
+@mcp.tool()
+def orbitplane_update_concept_progress(
+    learner_id: str,
+    concept_id: str,
+    status: str,
+    confidence: float,
+    evidence_event_ids: list[str] | None = None,
+    next_review_at: str | None = None,
+    notes: str | None = None,
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    """Update one learner's bounded progress state for one concept."""
+    return _update_concept_progress_result(
+        learner_id=learner_id,
+        concept_id=concept_id,
+        status=status,
+        confidence=confidence,
+        evidence_event_ids=evidence_event_ids,
+        next_review_at=next_review_at,
+        notes=notes,
+        db_path=db_path,
     )
 
 

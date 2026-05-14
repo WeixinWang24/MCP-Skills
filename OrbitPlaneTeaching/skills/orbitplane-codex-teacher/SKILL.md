@@ -17,6 +17,11 @@ Preferred MCP tools:
 - `orbitplane_emit_event`
 - `orbitplane_emit_events`
 - `orbitplane_end_session`
+- `orbitplane_initialize_learning_state`
+- `orbitplane_get_learner_profile`
+- `orbitplane_get_concept_progress`
+- `orbitplane_record_teaching_evidence`
+- `orbitplane_update_concept_progress`
 
 When MCP is unavailable, write an event JSON file and run:
 
@@ -40,6 +45,18 @@ Emit events for meaningful development moments:
 - when plan progress changes: `CHECKLIST_UPDATED`
 
 Do not emit for tiny edits. Prefer events that reconstruct the development story.
+
+## Learning State
+
+Before generating beginner-oriented teaching, read learner state when the MCP tools are available:
+
+1. Initialize state if needed with `orbitplane_initialize_learning_state`.
+2. Read profile with `orbitplane_get_learner_profile`.
+3. Read path progress with `orbitplane_get_concept_progress`.
+4. After emitting evidence events, call `orbitplane_record_teaching_evidence`.
+5. Update the related concept with `orbitplane_update_concept_progress`.
+
+Do not invent learner mastery. Use conservative progress states such as `introduced` or `practiced` until the learner applies the concept in project work.
 
 ## Teaching Policy
 

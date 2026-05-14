@@ -6,7 +6,8 @@
         "/Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/server.py"
       ],
       "env": {
-        "ORBITPLANE_CODEX_EVENT_DIR": "/Volumes/2TB/Dev/OrbitPlane/.orbitplane/codex-events"
+        "ORBITPLANE_CODEX_EVENT_DIR": "/Volumes/2TB/Dev/OrbitPlane/.orbitplane/codex-events",
+        "ORBITPLANE_TEACHING_STATE_DB": "/Volumes/2TB/Dev/OrbitPlane/.orbitplane/teaching-state/learner-progress.sqlite3"
       }
     }
   }

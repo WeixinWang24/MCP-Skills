@@ -114,9 +114,44 @@ class TestOrbitPlaneTeachingMcpIntegration:
             "orbitplane_emit_events",
             "orbitplane_start_session",
             "orbitplane_end_session",
+            "orbitplane_initialize_learning_state",
+            "orbitplane_get_learner_profile",
+            "orbitplane_get_concept_progress",
+            "orbitplane_record_teaching_evidence",
+            "orbitplane_update_concept_progress",
         }.issubset(names)
 
     def test_mcp_emit_events_writes_fixture_stream(self, tmp_path: Path) -> None:
         result = anyio.run(_call_emit_events, tmp_path)
         assert result["accepted"] == 2
         assert (tmp_path / "codex_dummy_teaching_session.jsonl").exists()
+
+    def test_mcp_learning_state_tools_initialize_and_read_profile(self, tmp_path: Path) -> None:
+        result = anyio.run(_call_learning_state_profile, tmp_path)
+        assert result["learnerId"] == "default"
+        assert result["level"] == "absolute_beginner"
+        assert result["primaryGoal"] == "learn_python_through_project"
+
+
+async def _call_learning_state_profile(out_dir: Path) -> dict[str, object]:
+    db_path = out_dir / "learner-progress.sqlite3"
+    params = StdioServerParameters(
+        command=sys.executable,
+        args=[str(_SERVER_PATH), "--out-dir", str(out_dir)],
+        env={**os.environ, "ORBITPLANE_CODEX_EVENT_DIR": str(out_dir)},
+    )
+    async with stdio_client(params) as (read_stream, write_stream):
+        async with ClientSession(read_stream, write_stream) as session:
+            await session.initialize()
+            await session.call_tool(
+                "orbitplane_initialize_learning_state",
+                {"db_path": str(db_path)},
+            )
+            result = await session.call_tool(
+                "orbitplane_get_learner_profile",
+                {"learner_id": "default", "db_path": str(db_path)},
+            )
+            text = "\n".join(
+                item.text for item in result.content if getattr(item, "type", None) == "text"
+            )
+            return json.loads(text)
