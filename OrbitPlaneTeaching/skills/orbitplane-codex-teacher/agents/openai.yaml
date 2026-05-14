@@ -1,0 +1,10 @@
+interface:
+  display_name: "OrbitPlane Codex Teacher"
+  short_description: "Emit OrbitPlane teaching events."
+  default_prompt: "Use $orbitplane-codex-teacher to emit concise OrbitPlane teaching events for this development task."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "orbitplane-teaching"
+      description: "Local MCP server for OrbitPlane Codex teaching event output."

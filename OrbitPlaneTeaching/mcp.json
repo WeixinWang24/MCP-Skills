@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "orbitplane-teaching": {
+      "command": "/Users/visen24/anaconda3/envs/Orbit/bin/python",
+      "args": [
+        "/Volumes/2TB/Dev/modules/MCP/OrbitPlaneTeaching/server.py"
+      ],
+      "env": {
+        "ORBITPLANE_CODEX_EVENT_DIR": "/Volumes/2TB/Dev/OrbitPlane/.orbitplane/codex-events"
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import sys
+import importlib.util
 from pathlib import Path
 
 import anyio
@@ -10,11 +11,19 @@ import pytest
 from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import server as obsidian_server
-
-
 _SERVER_PATH = Path(__file__).resolve().parent / "server.py"
+
+
+def _load_server_module():
+    spec = importlib.util.spec_from_file_location("obsidian_mcp_server", _SERVER_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("Unable to load Obsidian MCP server module.")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+obsidian_server = _load_server_module()
 
 
 @pytest.fixture
